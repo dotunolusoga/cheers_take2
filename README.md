@@ -3,6 +3,8 @@ Ruby cheers exercise (see: dotunolusoga/cheers), this time 3 weeks into learning
 
 #Instructions
 
+* 'chmod +x filename'
+
 #Specifications, for non-interactive version of cheers
 
 ##Help Usage
