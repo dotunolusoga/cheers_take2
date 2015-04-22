@@ -1,7 +1,31 @@
 #!/usr/bin/env ruby
 
 
-puts <<EOS
+name = ARGV[0]
+birth_date = ARGV[1]
+
+if name.class == String && birth_date.nil?
+	name_case = name.gsub(/[^\w]/, "").upcase
+  an_letters= "AEFHILMNORSX"
+  name_case.each_char do |letter|
+    article = an_letters.include?(letter) ? "an" : "a"
+    puts "Give me #{article}...  #{letter}"
+  end
+  puts name + "'s just GRAND!"
+  puts ""
+  print <<EOS
+Try again with './cheers.rb [Name] [MM/DD Birthday]'
+EOS
+#elsif name.class == String && birth_date.class == nil
+	#puts <<EOS
+#I'd cheer for you, if only I knew who you were :( \n
+#Try again with './cheers.rb [Name] [MM/DD Birthday]'
+#EOS
+else
+	puts <<EOS
 I'd cheer for you, if only I knew who you were :( \n
 Try again with './cheers.rb [Name] [MM/DD Birthday]
 EOS
+end
+
+

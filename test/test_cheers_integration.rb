@@ -58,13 +58,13 @@ EOS
   def test_only_name_argument
     output = `./cheers Abby`
     expected = <<EOS
-Give me an... A
+Give me an...  A
 Give me a...  B
 Give me a...  B
 Give me a...  Y
 Abby's just GRAND!
 
-Try again with './cheers.rb [Name] [MM/DD Birthday]
+Try again with './cheers.rb [Name] [MM/DD Birthday]'
 EOS
     assert_equal expected, output
   end
