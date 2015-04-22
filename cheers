@@ -1,31 +1,70 @@
 #!/usr/bin/env ruby
 
+require 'date'
 
-name = ARGV[0]
-birth_date = ARGV[1]
+$an_letters= "AEFHILMNORSX"
 
-if name.class == String && birth_date.nil?
-	name_case = name.gsub(/[^\w]/, "").upcase
-  an_letters= "AEFHILMNORSX"
-  name_case.each_char do |letter|
-    article = an_letters.include?(letter) ? "an" : "a"
-    puts "Give me #{article}...  #{letter}"
-  end
-  puts name + "'s just GRAND!"
-  puts ""
-  print <<EOS
-Try again with './cheers.rb [Name] [MM/DD Birthday]'
-EOS
-#elsif name.class == String && birth_date.class == nil
-	#puts <<EOS
-#I'd cheer for you, if only I knew who you were :( \n
-#Try again with './cheers.rb [Name] [MM/DD Birthday]'
-#EOS
-else
+def exit_with_usage_instructions
 	puts <<EOS
 I'd cheer for you, if only I knew who you were :( \n
 Try again with './cheers.rb [Name] [MM/DD Birthday]
 EOS
+	exit
+end
+
+def cheer_name
+	$name_case.each_char do |letter|
+	  article = $an_letters.include?(letter) ? "an" : "a"
+	  puts "Give me #{article}... #{letter}"
+	end
+	puts "#{$name}'s just GRAND!"
+	puts ""
+	# puts "I would wish you a Happy Birthday, if I knew when that was!"
+end
+
+def cheer_with_date
+	$name_case.each_char do |letter|
+	  article = $an_letters.include?(letter) ? "an" : "a"
+	  puts "Give me #{article}... #{letter}"
+	end
+	puts "#{$name}'s just GRAND!"
+	puts ""
+end
+
+def bday_error
+	puts "I would wish you a Happy Birthday, if I knew when that was!"
+end
+
+def get_days(date)
+	birth_day = Date.parse(date)
+	todays_date = Date.today
+	$b_days= (birth_day - todays_date) % 365
+	$b_days.to_i
+end
+
+exit_with_usage_instructions if ARGV.empty?
+
+$name = ARGV[0]
+$name_case = $name.upcase.gsub(/[^A-Z]/, "")
+
+exit_with_usage_instructions if $name_case.empty?
+
+$birth_date = ARGV[1]
+
+if $birth_date.nil? || $birth_date.length > 5
+	cheer_name
+	bday_error
+else
+	cheer_name
+	begin
+		count = get_days($birth_date)
+		puts "Awesome! Your birthday is in #{count} days! Happy Birthday in advance!"
+	rescue
+		bday_error
+	end
 end
 
 
+
+
+#if $birth_date.nil? || $birthdate
