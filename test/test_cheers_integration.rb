@@ -28,7 +28,6 @@ require_relative 'helper'
 # => dd/mm (25/08)
 # => dd/mm/yy (08/25/2015)
 
-
 class TestCheersIntegration < Minitest::Test
 
   def test_zero_argument_print_help_message

@@ -19,7 +19,6 @@ def cheer_name
 	end
 	puts "#{$name}'s just GRAND!"
 	puts ""
-	# puts "I would wish you a Happy Birthday, if I knew when that was!"
 end
 
 def cheer_with_date
@@ -63,8 +62,3 @@ else
 		bday_error
 	end
 end
-
-
-
-
-#if $birth_date.nil? || $birthdate
