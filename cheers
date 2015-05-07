@@ -51,8 +51,7 @@ exit_with_usage_instructions if $name_case.empty?
 $birth_date = ARGV[1]
 
 if $birth_date.nil? || $birth_date.length > 5
-	cheer_name
-	bday_error
+	puts "Try again with './cheers.rb [Name] [MM/DD Birthday]"
 else
 	cheer_name
 	begin
